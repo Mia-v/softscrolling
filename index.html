@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script>
+  window.onbeforeunload = function(){
+    window.scrollTo(0, 0);
+  }
+  </script>
+  <style>
+  body {
+    padding: 0;
+    margin: 0;
+    width:100%;
+    overflow: hidden;
+  }
+  .main{
+    display: flex;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  #prob{
+    float: right;
+  }
+
+  h1{
+    text-align: center;
+    margin: auto;
+  }
+
+  #first{
+    background-image: url('keghan-crossland-42934-unsplash.jpg');
+    color: white;
+  }
+
+  #second{
+    background-image: url('sebastian-unrau-47679-unsplash.jpg');
+  }
+
+  #third{
+    background-image: url('hikersbay-hikersbay-3503-unsplash.jpg');
+  }
+
+  #fourth{
+    background-image: url('sven-schlager-758-unsplash.jpg');
+    color: white;
+  }
+
+  #fifth{
+    background-image: url('steve-huntington-374991-unsplash.jpg');
+  }
+
+  #sixth{
+    background-image: url('eberhard-grossgasteiger-382463-unsplash.jpg');
+  }
+
+  </style>
+</head>
+<body>
+  <div class="main" id = "first">
+    <h1>Just scroll it.</h1>
+  </div>
+  <div class="main" id="second">
+    <h1>Just scroll it.</h1>
+  </div>
+  <div class="main" id="third">
+    <h1>Just scroll it.</h1>
+  </div>
+  <div class="main" id="fourth">
+    <div id= "prob"><h1>Just scroll it.</h1></div>
+  </div>
+  <div class="main" id="fifth">
+    <h1>Just scroll it.</h1>
+  </div>
+  <div class="main" id="sixth" >
+    <h1></h1>
+  </div>
+
+
+  <script>
+  var blocks= [];
+  function sizes(){
+    blocks=[];
+    document.querySelectorAll(".main").forEach((el) => {blocks.push(el.offsetTop);});
+  }
+  sizes();
+
+  window.addEventListener("resize", sizes);
+  document.addEventListener('wheel', swish);
+
+  var pointer = 0;
+  var isGateClosed = false;
+
+  function move(coord) {
+    if (coord < blocks[pointer+1]) {
+      setTimeout(function() {
+        coord += 5
+        window.scrollTo(0, coord);
+        move(coord);
+      }, 5);
+    }
+  }
+
+  function moveBack(coord){
+    if (coord >= blocks[pointer-1]){
+      setTimeout(function (){
+        coord -= 5
+        window.scrollTo(0, coord);
+        moveBack(coord);
+      }, 5);
+    }
+  }
+
+  function swish(event) {
+    if (event.deltaY > 0) {
+      if (pointer == blocks.length - 1) {
+        return false;
+      } else {
+        if (!isGateClosed) {
+          isGateClosed = true;
+          move(blocks[pointer]);
+          setTimeout(function () {
+            console.log("a", blocks[pointer]);
+            pointer++;
+            isGateClosed = false;
+          }, 1500);
+        }
+      }
+    } else if (event.deltaY < 0) {
+      if (pointer == 0) {
+        return false;
+      }else{
+        if (!isGateClosed){
+          isGateClosed = true;
+          moveBack(blocks[pointer]);
+          setTimeout(function(){
+            console.log("b", blocks[pointer]);
+            pointer--;
+            isGateClosed = false;
+          }, 1500);
+        }
+      }
+    }
+  }
+
+  </script>
+
+</body>
+</html>
