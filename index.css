@@ -1,0 +1,49 @@
+  body {
+    padding: 0;
+    margin: 0;
+    width:100%;
+    overflow: hidden;
+  }
+  .main{
+    display: flex;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  #prob{
+    float: right;
+  }
+
+  h1{
+    text-align: center;
+    margin: auto;
+  }
+
+  #first{
+    background-image: url('./pics/keghan-crossland-42934-unsplash.jpg');
+    color: white;
+  }
+
+  #second{
+    background-image: url('./pics/sebastian-unrau-47679-unsplash.jpg');
+  }
+
+  #third{
+    background-image: url('./pics/hikersbay-hikersbay-3503-unsplash.jpg');
+  }
+
+  #fourth{
+    background-image: url('./pics/sven-schlager-758-unsplash.jpg');
+    color: white;
+  }
+
+  #fifth{
+    background-image: url('./pics/steve-huntington-374991-unsplash.jpg');
+  }
+
+  #sixth{
+    background-image: url('./pics/eberhard-grossgasteiger-382463-unsplash.jpg');
+  }
